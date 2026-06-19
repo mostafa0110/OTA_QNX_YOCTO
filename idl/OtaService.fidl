@@ -1,0 +1,58 @@
+package ota
+
+interface OtaService {
+    version { major 1 minor 0 }
+
+    enumeration UpdateState {
+        IDLE
+        DOWNLOADING
+        VERIFYING
+        INSTALLING
+        REBOOT_PENDING
+        SUCCESS
+        FAILED
+        ROLLED_BACK
+    }
+
+    attribute String      currentVersion readonly
+    attribute UpdateState state          readonly
+
+    // Cloud -> (guard) -> target. bundleUrl is an HTTP locator served by the guard cache.
+    method requestUpdate {
+        in {
+            String targetId
+            String version
+            String bundleUrl
+            String sha256
+        }
+        out {
+            Boolean accepted
+            String  reason
+        }
+    }
+
+    method getStatus {
+        out {
+            UpdateState state
+            UInt8       progressPercent
+            String      activeSlot
+        }
+    }
+
+    broadcast updateProgress {
+        out {
+            UpdateState state
+            UInt8       progressPercent
+            String      detail
+        }
+    }
+
+    broadcast updateResult {
+        out {
+            Boolean success
+            String  newVersion
+            String  activeSlot
+            String  message
+        }
+    }
+}

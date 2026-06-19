@@ -1,0 +1,15 @@
+{
+  "unicast": "192.168.10.1",
+  "logging": { "level": "info", "console": "true" },
+  "applications": [ { "name": "ota-guard", "id": "0x1277" } ],
+  "routing": "ota-guard",
+  "services": [
+    { "service": "0x1234", "instance": "0x0001", "unreliable": "30509" }
+  ],
+  "service-discovery": {
+    "enable": "true",
+    "multicast": "224.244.224.245",
+    "port": "30490",
+    "protocol": "udp"
+  }
+}

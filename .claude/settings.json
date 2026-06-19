@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git log *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(find *)",
+      "Bash(cmake *)",
+      "Bash(make *)",
+      "Bash(ctest *)"
+    ],
+    "ask": [
+      "Bash(bitbake *)",
+      "Bash(git push *)"
+    ],
+    "deny": [
+      "Bash(dd *)",
+      "Bash(mkfs *)",
+      "Bash(rm -rf *)",
+      "Bash(curl *)",
+      "Bash(wget *)",
+      "Read(./keys/**)",
+      "Read(./**/*.key.pem)"
+    ]
+  }
+}

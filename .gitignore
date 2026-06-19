@@ -1,0 +1,24 @@
+# build
+build/
+*.o
+*.so
+tmp/
+sstate-cache/
+downloads/
+
+# secrets & artifacts
+keys/*.pem
+keys/*.key
+keys/*.crt
+cloud/bundles/*.raucb
+*.img
+*.wic
+*.wic.bz2
+
+# Claude Code personal
+CLAUDE.local.md
+.claude/settings.local.json
+
+# IDE
+.vscode/
+.idea/

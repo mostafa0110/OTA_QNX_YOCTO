@@ -1,0 +1,21 @@
+import "platform:/plugin/org.genivi.commonapi.someip/deployment/CommonAPI-SOMEIP_deployment_spec.fdepl"
+import "OtaService.fidl"
+
+define org.genivi.commonapi.someip.deployment for interface ota.OtaService {
+    SomeIpServiceID = 0x1234
+
+    method requestUpdate { SomeIpMethodID = 0x0001 }
+    method getStatus     { SomeIpMethodID = 0x0002 }
+
+    broadcast updateProgress {
+        SomeIpEventID     = 0x8001
+        SomeIpEventGroups = { 0x4455 }
+    }
+    broadcast updateResult {
+        SomeIpEventID     = 0x8002
+        SomeIpEventGroups = { 0x4455 }
+    }
+
+    attribute currentVersion { SomeIpGetterID = 0x0003 }
+    attribute state          { SomeIpGetterID = 0x0004 }
+}

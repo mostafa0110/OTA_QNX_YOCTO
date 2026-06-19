@@ -1,0 +1,7 @@
+# STARTING POINT — A/B layout for tryboot-based RAUC on RPi5. Validate in Spike B.
+# tryboot/autoboot.txt selects the boot partition; RAUC writes the inactive rootfs slot.
+
+part /boot   --source bootimg-partition --fstype=vfat --label boot   --align 4096 --fixed-size 64M --active
+part /        --source rootfs           --fstype=ext4 --label rootfsA --align 4096 --fixed-size 1536M
+part         --fstype=ext4 --label rootfsB --align 4096 --fixed-size 1536M
+part /data   --fstype=ext4 --label data   --align 4096 --fixed-size 512M
